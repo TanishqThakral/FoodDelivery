@@ -19,16 +19,13 @@ namespace ConsoleApp3
                 {
                     ResturantName = name,
                     Owner = owner,
-                    phoneNo = phone,
+                    PhoneNo = phone,
                     Food = food,
-                    address= address,
-                    landmark= landmark
+                    Address= address,
+                    Landmark= landmark
                 };
             return resturant;
             }                        
-        }
-
-        
-
+        }   
     }
-}
+

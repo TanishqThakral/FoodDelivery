@@ -16,9 +16,9 @@ namespace ConsoleApp3
                 Customer C1 = new Customer
                 {
                     Name = name,
-                    address = address,
-                    landmark = landmark,
-                    phoneNo = phone
+                    Address = address,
+                    Landmark = landmark,
+                    PhoneNo = phone
                 };             
 
             return C1;

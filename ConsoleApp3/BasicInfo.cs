@@ -6,9 +6,9 @@ namespace ConsoleApp3
 {
     public abstract class BasicInfo
     {
-        protected string address;
-        protected string landmark;
-        protected long phoneNo; 
+        public string Address;
+        public string Landmark;
+        public long PhoneNo; 
 
     }
 }

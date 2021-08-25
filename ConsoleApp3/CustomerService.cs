@@ -43,14 +43,14 @@ namespace ConsoleApp3
 
         public bool AddCustomer(string name, string address, string landmark, long phone)
         {
-            Duplicate = CheckCredentials(name, phone);
-            if (!Duplicate)
+            duplicate = CheckCredentials(name, phone);
+            if (!duplicate)
             {
                 Customer customer = Customer.CreateCustomer(name, address, landmark, phone);
                 CustomerList.Add(customer);
             }
 
-            return !Duplicate;
+            return !duplicate;
         }
     }
 }
