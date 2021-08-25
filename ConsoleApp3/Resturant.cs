@@ -5,21 +5,17 @@ using System.Text;
 namespace ConsoleApp3
 {  
 
-    public class Resturant: IReasturant
+    public class Resturant
     {
-        public string ResturantName;
-        public string Owner;
-        public long PhoneNo;
+        public string ResturantName { get; private set; }
+        public string Owner { get; private set; }
+        public long PhoneNo { get; private set; }
+
         public List<string> Food = new List<string>();
-        private bool Duplicate;
         
 
-        public void AddResturant(string name, string owner, long phone, List<string> food)
-        {
-            Duplicate = ResturantService.CheckDuplicate(name);            
-
-            if (!Duplicate)
-            {
+        public Resturant CreateResturant(string name, string owner, long phone, List<string> food)
+        {           
                 Resturant resturant = new Resturant
                 {
                     ResturantName = name,
@@ -27,9 +23,7 @@ namespace ConsoleApp3
                     PhoneNo = phone,
                     Food = food
                 };
-
-                ResturantService.ResturantList.Add(resturant);
-                //Console.WriteLine("Resturant Added Successfully!");
+            return resturant;
             }                        
         }
 

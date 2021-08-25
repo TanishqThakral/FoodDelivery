@@ -4,10 +4,11 @@ using System.Text;
 
 namespace ConsoleApp3
 {
-    class CustomerService
+    class CustomerService: ICustomerService
     {
-        private static bool Duplicate;
-        private static bool Login;
+        private static bool duplicate;
+        private static bool login;
+        Customer Customer = new Customer();
 
         public static List<Customer> CustomerList = new List<Customer>
         {
@@ -20,23 +21,36 @@ namespace ConsoleApp3
             {
                 if (c.PhoneNo == phone)
                 {
-                    Duplicate = true;
+                    duplicate = true;
                     Console.WriteLine("This Phone Number Already Exist");
                 }
             }
-            return Duplicate;
+            return duplicate;
         }
 
-        public static bool CheckCustomer(string name, long phone)
+        public bool CheckCredentials(string name, long phone)
         {
             foreach (Customer c in CustomerList)
             {
                 if (c.PhoneNo == phone && c.Name == name)
                 {
-                    Login = true;
+                    login = true;
                 }
             }
-            return Login;
+
+            return login;
+        }
+
+        public bool AddCustomer(string name, string address, string landmark, long phone)
+        {
+            Duplicate = CheckCredentials(name, phone);
+            if (!Duplicate)
+            {
+                Customer customer = Customer.CreateCustomer(name, address, landmark, phone);
+                CustomerList.Add(customer);
+            }
+
+            return !Duplicate;
         }
     }
 }

@@ -13,8 +13,8 @@ namespace ConsoleApp3
                 int x, y;
                 List<string> food = new List<string> { };
                 bool status = false;
-                Customer User = new Customer();
-                Resturant Resturant = new Resturant();
+                CustomerService Customer = new CustomerService();
+                ResturantService Resturant = new ResturantService();
 
                 Console.WriteLine("Welcome To Foodie App");
                 Console.WriteLine("If you are a Customer, Enter 1 .");
@@ -42,7 +42,7 @@ namespace ConsoleApp3
                         Console.WriteLine("Enter your Phone Number");
                         long phone = Convert.ToInt64(Console.ReadLine());
 
-                        status = User.AddCustomer(name, address, landmark, phone);
+                        status = Customer.AddCustomer(name, address, landmark, phone);
                         if (!status)
                         {
                             Console.WriteLine("User Already Exist");
@@ -56,27 +56,28 @@ namespace ConsoleApp3
                         string name = Console.ReadLine();
                         Console.WriteLine("Enter your Phone Number");
                         long phone = Convert.ToInt64(Console.ReadLine());
-                        status = User.CheckCredentials(name, phone);
+                        status = Customer.CheckCredentials(name, phone);
                         if (!status)
                         {
                             Console.WriteLine("Invaild User Name or Phone Number");
                         }
                     }
                     if (status)
-                    {
-                        if (ResturantService.ResturantList.Count != 0) 
+                    {                  
+
+                        if (Resturant.ResturantList.Count != 0) 
                         {
-                            ResturantService.GetAllResturant();
+                            Resturant.GetAllResturant();
                             Console.WriteLine("Enter Resturant Name");
-                            string Resturantname = Console.ReadLine();
-                            if (!ResturantService.CheckResturant(Resturantname))
+                            string resturantName = Console.ReadLine();
+                            if (!Resturant.CheckResturant(resturantName))
                             {
-                                ResturantService.Search(Resturantname);
-                                Resturantname = Console.ReadLine();
+                                Resturant.Search(resturantName);
+                                resturantName = Console.ReadLine();
                             }
                             else
                             {
-                                ResturantService.ShowMenu(Resturantname);
+                                Resturant.ShowMenu(resturantName);
                             }
                         }
                         
@@ -91,20 +92,20 @@ namespace ConsoleApp3
                 else if (x == 2)
                 {
                     Console.WriteLine("To add a resturant, Enter Resturant Name");
-                    string Rname = Console.ReadLine();
+                    string resturantName = Console.ReadLine();
                     Console.WriteLine("Enter Owner/Manager Name");
-                    string Name = Console.ReadLine();
+                    string name = Console.ReadLine();
                     Console.WriteLine("Enter Phone Number");
-                    long Phone = Convert.ToInt64(Console.ReadLine());
+                    long phone = Convert.ToInt64(Console.ReadLine());
                     Console.WriteLine("Enter 5 Recommended Food Items");
 
                     for (int i = 0; i < 5; ++i)
                     {
-                        string F = Console.ReadLine();
-                        food.Add(F);
+                        string f = Console.ReadLine();
+                        food.Add(f);
                     }
 
-                    Resturant.AddResturant(Rname, Name, Phone, food);
+                    Resturant.AddResturant(resturantName, name, phone, food);
                 }
 
                 //To Exit

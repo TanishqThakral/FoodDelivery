@@ -6,39 +6,24 @@ namespace ConsoleApp3
 {
 
 
-    public class Customer : ICustomer
+    public class Customer 
     {
-        public string Name;
-        private string Address;
-        private string Landmark;
-        public long PhoneNo;
-        private bool Duplicate;
-        private bool Login;
+        public string Name { get; private set; }
+        private string address;
+        private string landmark;
+        public long PhoneNo { get; private set; }
 
-
-        public bool AddCustomer(string name, string address, string landmark, long phone)
-        {
-            Duplicate = CustomerService.CheckDuplicate(phone);
-
-            if (!Duplicate)
-            {
+        public Customer CreateCustomer(string name, string address, string landmark, long phone)
+        {         
                 Customer C1 = new Customer
                 {
                     Name = name,
-                    Address = address,
-                    Landmark = landmark,
+                    address = address,
+                    landmark = landmark,
                     PhoneNo = phone
-                };
-                CustomerService.CustomerList.Add(C1);
-            }
-            return !Duplicate;
-        }
+                };             
 
-        public bool CheckCredentials(string name, long phone)
-        {
-            Login = CustomerService.CheckCustomer(name, phone);
-
-            return Login;
+            return C1;
         }
     }
 

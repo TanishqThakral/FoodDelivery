@@ -6,14 +6,27 @@ using System.Linq;
 
 namespace ConsoleApp3
 {
-    public static class ResturantService
+    public class ResturantService: IReasturantService
     {
-        public static List<Resturant> ResturantList = new List<Resturant>
+        public static bool Duplicate;
+        Resturant resturant = new Resturant();
+
+        public List<Resturant> ResturantList = new List<Resturant>
         {
 
         };
 
-        public static bool Duplicate;
+        public bool AddResturant(string name, string owner, long phone, List<string> food)
+        {
+            if (!CheckDuplicate(name))
+            {
+                Resturant r = resturant.CreateResturant(name, owner, phone, food);
+                ResturantList.Add(r);
+            }            
+            
+            return !CheckDuplicate(name);
+        }
+        
         public static bool CheckDuplicate(string name)
         {
             foreach (Resturant resturant in ResturantList)
@@ -27,7 +40,7 @@ namespace ConsoleApp3
             return Duplicate;
         }
 
-        public static void GetAllResturant()
+        public void GetAllResturant()
         {
             foreach (Resturant resturant in ResturantService.ResturantList)
             {
@@ -35,7 +48,7 @@ namespace ConsoleApp3
             }
         }
 
-        public static void ShowMenu(string name)
+        public void ShowMenu(string name)
         {
             foreach (Resturant resturant in ResturantService.ResturantList)
             {
@@ -49,7 +62,7 @@ namespace ConsoleApp3
             }
         }
 
-        public static bool CheckResturant(string name)
+        public bool CheckResturant(string name)
         {
             bool status = false;
             foreach (Resturant resturant in ResturantService.ResturantList)
@@ -62,7 +75,7 @@ namespace ConsoleApp3
             return status;
         }
 
-        public static void Search(string name)
+        public void Search(string name)
         {
             IEnumerable<Resturant> ReleatedResturant = from resturant in ResturantList
                                                        where resturant.ResturantName.Contains(name)
