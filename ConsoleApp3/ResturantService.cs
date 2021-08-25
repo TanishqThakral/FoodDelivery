@@ -11,16 +11,16 @@ namespace ConsoleApp3
         public static bool Duplicate;
         Resturant resturant = new Resturant();
 
-        public List<Resturant> ResturantList = new List<Resturant>
+        public static List<Resturant> ResturantList = new List<Resturant>
         {
 
         };
 
-        public bool AddResturant(string name, string owner, long phone, List<string> food)
+        public bool AddResturant(string name, string address, string landmark, string owner, long phone, List<string> food)
         {
             if (!CheckDuplicate(name))
             {
-                Resturant r = resturant.CreateResturant(name, owner, phone, food);
+                Resturant r = resturant.CreateResturant(name,address,landmark, owner, phone, food);
                 ResturantList.Add(r);
             }            
             

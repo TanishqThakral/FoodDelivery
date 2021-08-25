@@ -6,12 +6,10 @@ namespace ConsoleApp3
 {
 
 
-    public class Customer 
+    public class Customer : BasicInfo
     {
         public string Name { get; private set; }
-        private string address;
-        private string landmark;
-        public long PhoneNo { get; private set; }
+        
 
         public Customer CreateCustomer(string name, string address, string landmark, long phone)
         {         
@@ -20,7 +18,7 @@ namespace ConsoleApp3
                     Name = name,
                     address = address,
                     landmark = landmark,
-                    PhoneNo = phone
+                    phoneNo = phone
                 };             
 
             return C1;

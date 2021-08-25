@@ -65,7 +65,7 @@ namespace ConsoleApp3
                     if (status)
                     {                  
 
-                        if (Resturant.ResturantList.Count != 0) 
+                        if (ResturantService.ResturantList.Count != 0) 
                         {
                             Resturant.GetAllResturant();
                             Console.WriteLine("Enter Resturant Name");
@@ -93,6 +93,10 @@ namespace ConsoleApp3
                 {
                     Console.WriteLine("To add a resturant, Enter Resturant Name");
                     string resturantName = Console.ReadLine();
+                    Console.WriteLine("Enter your Address");
+                    string address = Console.ReadLine();
+                    Console.WriteLine("Enter Nearest Landmark");
+                    string landmark = Console.ReadLine();
                     Console.WriteLine("Enter Owner/Manager Name");
                     string name = Console.ReadLine();
                     Console.WriteLine("Enter Phone Number");
@@ -105,7 +109,7 @@ namespace ConsoleApp3
                         food.Add(f);
                     }
 
-                    Resturant.AddResturant(resturantName, name, phone, food);
+                    Resturant.AddResturant(resturantName,address,landmark, name, phone, food);
                 }
 
                 //To Exit
